@@ -7,27 +7,66 @@ terraform {
   }
 }
 
-provider "github" {}
-
-data "github_user" "self" {
-  username = ""
+provider "github" {
+  alias = "akerl"
 }
 
-data "github_organization" "all" {
-  for_each = var.organizations
-  name     = each.key
+provider "github" {
+  alias = "amylum"
+  owner = "amylum"
 }
 
-data "github_repositories" "all" {
-  query = join(" ", concat(
-    ["org:${data.github_user.self.login}"],
-    [for x in data.github_organization.all : format("org:%s", x.name)]
-  ))
+provider "github" {
+  alias = "armorfret"
+  owner = "armorfret"
 }
 
-data "github_repository" "each" {
-  for_each  = toset(data.github_repositories.all.full_names)
-  full_name = each.key
+provider "github" {
+  alias = "dock0"
+  owner = "dock0"
 }
 
+provider "github" {
+  alias = "halyard"
+  owner = "halyard"
+}
 
+module "akerl" {
+  source = "./org"
+  name   = "akerl"
+  providers = {
+    github = github.akerl
+  }
+}
+
+module "amylum" {
+  source = "./org"
+  name   = "amylum"
+  providers = {
+    github = github.amylum
+  }
+}
+
+module "armorfret" {
+  source = "./org"
+  name   = "armorfret"
+  providers = {
+    github = github.armorfret
+  }
+}
+
+module "dock0" {
+  source = "./org"
+  name   = "dock0"
+  providers = {
+    github = github.dock0
+  }
+}
+
+module "halyard" {
+  source = "./org"
+  name   = "halyard"
+  providers = {
+    github = github.halyard
+  }
+}
