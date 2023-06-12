@@ -22,9 +22,11 @@ data "github_repository" "each" {
 
 resource "github_repository" "each" {
   for_each = { for index, repo in data.github_repository.each : repo.name => repo }
-  name     = each.value.name
 
-  description = each.value.description
+  name = each.value.name
+
+  description  = each.value.description
+  homepage_url = each.value.homepage_url
 
   has_issues      = true
   has_downloads   = false
@@ -33,5 +35,20 @@ resource "github_repository" "each" {
   has_discussions = false
 
   vulnerability_alerts = false
-}
 
+  allow_merge_commit     = false
+  allow_rebase_merge     = false
+  allow_squash_merge     = true
+  delete_branch_on_merge = true
+  allow_update_branch    = true
+
+  dynamic "pages" {
+    for_each = each.value.pages
+    content {
+      source {
+        branch = pages.value.source[0].branch
+        path   = pages.value.source[0].path
+      }
+    }
+  }
+}
