@@ -2,7 +2,7 @@ terraform {
   required_providers {
     github = {
       source  = "integrations/github"
-      version = "5.25.1"
+      version = "~> 5.28"
     }
   }
 }
@@ -51,4 +51,32 @@ resource "github_repository" "each" {
       }
     }
   }
+}
+
+resource "github_issue_label" "bug" {
+  for_each   = toset([for index, repo in data.github_repository.each : repo.name])
+  repository = each.key
+  name       = "bug"
+  color      = "ffa500"
+}
+
+resource "github_issue_label" "feature" {
+  for_each   = toset([for index, repo in data.github_repository.each : repo.name])
+  repository = each.key
+  name       = "feature"
+  color      = "0000ff"
+}
+
+resource "github_issue_label" "mergewhenready" {
+  for_each   = toset([for index, repo in data.github_repository.each : repo.name])
+  repository = each.key
+  name       = "mergewhenready"
+  color      = "008000"
+}
+
+resource "github_issue_label" "donotmerge" {
+  for_each   = toset([for index, repo in data.github_repository.each : repo.name])
+  repository = each.key
+  name       = "donotmerge"
+  color      = "ff0000"
 }
