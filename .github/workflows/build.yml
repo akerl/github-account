@@ -1,7 +1,12 @@
+---
 name: Build
-on:
-  pull_request:
+'on':
   push:
+    branches:
+    - main
+    tags:
+    - "**"
+  pull_request_target:
 jobs:
   build:
     name: Build
@@ -14,18 +19,18 @@ jobs:
       with:
         submodules: recursive
     - name: Download Terraform
-      run: ./scripts/download_terraform.sh $TERRAFORM_VERSION
+      run: "./scripts/download_terraform.sh $TERRAFORM_VERSION"
     - name: Init workspace
-      run: ~/tfbin/terraform init -upgrade -input=false
+      run: "~/tfbin/terraform init -upgrade -input=false"
     - name: Check format
-      run: ~/tfbin/terraform fmt -write=false -diff=true -check
+      run: "~/tfbin/terraform fmt -write=false -diff=true -check"
     - name: Check plan
-      run: ~/tfbin/terraform plan -detailed-exitcode -input=false
+      run: "~/tfbin/terraform plan -detailed-exitcode -input=false"
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
     - name: Post to hook-exporter
-      run: ./.github/exporter.sh
+      run: "./.github/exporter.sh"
       env:
-        EXPORTER_TOKEN: ${{ secrets.EXPORTER_TOKEN }}
-        JOB_STATUS: ${{ job.status }}
-      if: ${{ always() }}
+        EXPORTER_TOKEN: "${{ secrets.EXPORTER_TOKEN }}"
+        JOB_STATUS: "${{ job.status }}"
+      if: "${{ always() }}"
