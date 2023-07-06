@@ -18,6 +18,10 @@ jobs:
       uses: actions/checkout@v3
       with:
         submodules: recursive
+    - name: Write PEM file
+      run: echo "$PEM_FILE" > key.pem
+      env:
+        PEM_FILE: ${{ secrets.PEM_FILE }}
     - name: Download Terraform
       run: "./scripts/download_terraform.sh $TERRAFORM_VERSION"
     - name: Init workspace
