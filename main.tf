@@ -96,3 +96,20 @@ module "halyard" {
     github = github.halyard
   }
 }
+
+import {
+  to = module.halyard.github_repository.each["puppet-ecowitt"]
+  id = "puppet-ecowitt"
+}
+import {
+  to = module.halyard.github_repository.each["puppet-bulldozer"]
+  id = "puppet-bulldozer"
+}
+import {
+  to = module.akerl.github_repository.each["mq2glasses"]
+  id = "mq2glasses"
+}
+import {
+  to = module.akerl.github_repository.each["macroquest"]
+  id = "macroquest"
+}
