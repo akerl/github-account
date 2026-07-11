@@ -1,0 +1,316 @@
+---
+checks:
+- Build / Build (pull_request)
+- 'policy-bot: main'
+labels:
+- name: bug
+  color: ffa500
+- name: feature
+  color: 0000ff
+- name: mergewhenready
+  color: '008000'
+- name: donotmerge
+  color: ff0000
+orgs:
+  akerl:
+  - name: ".github"
+  - name: Alfred-Audio-Device
+    description: http://michael.thegrebs.com/2013/01/18/alfred2-audio-device/
+  - name: accounting
+    description: Personal ledger
+  - name: adventofcode
+    description: Advent of Code problems
+  - name: alfred-switchaudio
+  - name: aws-account
+    description: Configuration for my AWS account
+  - name: ballista
+  - name: basiccache
+    description: Simple key/value cache
+  - name: blindclock
+  - name: blog
+    description: Jekyll blog for akerl.org
+  - name: burglar
+  - name: config-template
+    description: Template for CI-driven config files
+  - name: configvault
+    description: Tool for managing configvault contents
+  - name: cultivator
+  - name: cultivator-puppetfile
+  - name: cultivator-rubygems
+  - name: cymbal
+    description: Converts Ruby hash keys to symbols
+  - name: dcs-library
+  - name: dotfiles
+    description: Personal system environment
+  - name: frame
+  - name: gandi-account
+    description: Gandi account configuration
+  - name: github-account
+  - name: github-auth-lambda
+    description: Handle Github OAuth via a Lambda
+  - name: githubchart
+    pages:
+      branch: gh-pages
+      path: "/"
+    description: Contribution plotting from GitHub's feed
+  - name: githubstats
+    description: Object oriented interface for Github's contribution scoring system
+  - name: go-indefinite-article
+    description: Indefinite article parser for Go
+  - name: go-lambda
+    description: Helper for running Golang AWS Lambdas
+  - name: goodcop
+  - name: grafana-json
+  - name: grafana-json-ledger
+  - name: hf-library
+    description: Quotes
+  - name: hook-exporter
+  - name: hss
+    description: SSH helper
+  - name: input
+    description: Simple golang library for soliciting user input via configurable
+      methods
+  - name: keyboard
+    description: Model 01 firmware
+  - name: keylime
+    description: Simple wrapper for using Mac Keychain
+  - name: kvmtoggle
+    description: Simple webserver to trigger KVM toggle shortcuts via USB OTG
+  - name: lambda-basic-auth
+  - name: ledgergraph
+  - name: ledgerhelpers
+    description: Helpers for my use of Ledger CLI
+  - name: libledger
+    description: Library for reading and writing Ledger transactions
+  - name: linode-account
+    description: Terraform for my Linode account
+  - name: littlesnitch
+    description: LittleSnitch rule groups
+  - name: logcabin
+    description: Support dynamic loading of modules at runtime
+  - name: macroquest
+  - name: madlibrarian
+    description: S3-backed quote library
+  - name: madlibrarian-lambda
+    description: Lambda code for MadLibrarian
+  - name: meld
+    description: Utility library for combining objects
+  - name: metrics
+    description: Simple Go library to emit Prometheus metrics
+  - name: mq2glasses
+    description: HUD-driven UI engine
+  - name: navigate
+    description: Use Chrome Devtools to navigate to a new URL from the command line
+  - name: octoauth
+    description: Lightweight wrapper to sanely handle OAuth tokens with Octokit
+  - name: otgkey
+    description: Send keypresses via USB gadget interface
+  - name: pkgforge
+  - name: pkgforge-golang-helper
+    description: Helper for packaging golang tools
+  - name: pkgforge-helper
+    description: Helper repo for building with pkgforge
+  - name: plaid-bootstrap
+  - name: quotes
+    description: Collection of quotes
+  - name: repo-checks
+  - name: s3-auth-proxy
+    description: Authenticated Lambda to proxy requests to S3
+  - name: scripts
+    description: personal helper scripts
+  - name: simplefin-exporter
+    description: SimpleFIN metrics exporter
+  - name: slack-mastodon
+    description: Slack bot that posts new things from a Mastodon feed
+  - name: smoosh
+    description: Tool for smooshing files from source repos into a target directory
+  - name: spaarti
+    description: Tool to maintain local clones of repos you have access to on GitHub
+  - name: speculate
+    description: Tool for assuming roles in AWS accounts
+  - name: stock-exporter
+    description: Metrics exporter for stock ticker data
+  - name: syncgithub
+    description: Golang helper to sync GitHub repos
+  - name: targit
+    description: Tool for adding GitHub release assets
+  - name: templates-s3
+  - name: thanksgiving
+  - name: timber
+    description: Simple golang logging library
+  - name: unifi-site
+  - name: userinput
+    description: Simple user input library
+  - name: voyager
+    description: Helper for assuming roles on AWS accounts
+  - name: watchdog-lambda
+    description: Watchdog service via AWS Lambda
+  - name: wh31e
+    description: Capture WH31E events and serve in Prometheus format
+  - name: yubiotp
+    description: Fetch MFA code from multiple connected yubikeys
+  amylum:
+  - name: ".github"
+  - name: build
+    description: Docker container for building packages
+  - name: repo
+    homepage_url: https://repo.scrtybybscrty.org/
+    description: Arch package repository
+  - name: s3repo
+    description: Simple library for interacting with Archlinux repos in S3
+  armorfret:
+  - name: ".github"
+  - name: ci-helpers
+  - name: terraform-aws-acm-certificate
+    description: Terraform module for provisioning ACM TLS certificates
+  - name: terraform-aws-apigw-lambda
+    description: AWS API Gateway backed by a Lambda function
+  - name: terraform-aws-lambda
+    description: Terraform module for deploying AWS Lambdas
+  - name: terraform-aws-lambda-blindclock
+  - name: terraform-aws-lambda-frame
+  - name: terraform-aws-lambda-githubauth
+    description: Terraform module for provisioning akerl/github-auth-lambda
+  - name: terraform-aws-lambda-hookexporter
+  - name: terraform-aws-lambda-madlibrarian
+    description: Terraform module for provisioning akerl/madlibrarian-lambda
+  - name: terraform-aws-lambda-s3authproxy
+    description: AWS Lambda for generated signed S3 URLs
+  - name: terraform-aws-lambda-watchdog
+    description: Module for deploying watchdog-lambda
+  - name: terraform-aws-r53-certbot
+    description: Terraform module for delegating a zone for certbot to manage LetsEncrypt
+      certificates
+  - name: terraform-aws-r53-zone
+    description: Terraform module for provisioning Route53 zones with some default
+      records
+  - name: terraform-aws-s3-configvault
+    description: Manage S3 bucket for shared server configuration
+  - name: terraform-aws-s3-publish
+    description: Terraform module for provisioning S3 buckets for object publishing
+  - name: terraform-aws-s3-website
+    description: Terraform module for provisioning TLS-enabled S3-hosted static sites
+  - name: terraform-provider-awscreds
+    description: Terraform Provider to generate IAM access keys without storing the
+      secret in the statefile
+  dock0:
+  - name: ".github"
+  - name: action-helper
+    description: Helpers for GitHub Actions
+  - name: arch
+    description: Minimal base Arch image
+  - name: base_arch
+    description: Base Archlinux package
+  - name: build
+    description: Build container
+  - name: dock0
+    description: Arch Docker host generator
+  - name: ducktape
+    description: Remote tarball unpacker for Docker images
+  - name: pkgforge
+    description: Container for building software
+  - name: pkgforge-golang
+    description: Helper for building golang packages
+  - name: pkgforge-golang-cross
+    description: Pkgforge Docker image preloaded with Golang and cross-compilation
+      libraries
+  - name: tarball_arch
+    description: Barebones tarball contain Archlinux for minimal containersc
+  halyard:
+  - name: ".github"
+  - name: halyard
+    description: Puppet repo for my Macs
+  - name: halyard.github.io
+    homepage_url: https://halyard.github.io
+    pages:
+      branch: main
+      path: "/"
+    description: Web portal for halyard
+  - name: homebrew-core
+    description: Custom Homebrew software repo
+  - name: image-archlinux
+    description: Archlinux OS image
+  - name: local-puppet-helper
+    description: Helpers for puppet repos
+  - name: puppet-acme
+    description: Module to configure ACME-based TLS certs
+  - name: puppet-babybuddy
+  - name: puppet-backup
+    description: Module for backing up with restic
+  - name: puppet-bulldozer
+    description: Deploy Bulldozer GitHub bot
+  - name: puppet-configvault
+  - name: puppet-console
+    description: Manage console
+  - name: puppet-cultivator
+  - name: puppet-disks
+    description: Configure devices and mounts
+  - name: puppet-docker
+    description: Configure Docker containers
+  - name: puppet-ecowitt
+  - name: puppet-frameproxy
+    description: MITMProxy instance for Frame
+  - name: puppet-garmin
+    description: Garmin importer for Grafana/Influx
+  - name: puppet-goat
+    description: Puppet module for goatcounter
+  - name: puppet-govee
+  - name: puppet-grafana
+    description: Puppet module to manage Grafana
+  - name: puppet-homeassistant
+    description: Puppet module to install HomeAssistant
+  - name: puppet-hostname
+    description: Module to configure OSX hostname
+  - name: puppet-influxdb
+    description: Configure InfluxDB
+  - name: puppet-iptables
+    description: Module to configure iptables rules
+  - name: puppet-keyboard
+    description: USB OTG keyboard gadget
+  - name: puppet-kiosk
+    description: Configure kiosk display
+  - name: puppet-kvm
+    description: Configure KVM virtual machines
+  - name: puppet-ledgergraph
+  - name: puppet-loki
+    description: Module to install Loki
+  - name: puppet-maybe
+  - name: puppet-mqtt
+  - name: puppet-network
+    description: Configure network settings
+  - name: puppet-nginx
+    description: Puppet module for nginx sites
+  - name: puppet-ntp
+    description: Puppet NTP module
+  - name: puppet-openssh
+    description: Puppet module to install openssh server
+  - name: puppet-policybot
+    description: Policy-bot Github App module
+  - name: puppet-prometheus
+    description: Manage Prometheus monitoring
+  - name: puppet-sdr
+    description: Configure SDR tools
+  - name: puppet-serverless
+    description: Configure puppet to run automatically without a master
+  - name: puppet-simplefin
+    description: Puppet module for simplefin exporter
+  - name: puppet-slackmastodon
+    description: Puppet module to install akerl/slack-mastodon
+  - name: puppet-smb
+    description: Module to configure SMB mounts
+  - name: puppet-stocks
+    description: Stock ticker metrics module
+  - name: puppet-sysctl
+  - name: puppet-teslamate
+    description: Puppet module to install Teslamate
+  - name: puppet-unpoller
+  - name: puppet-updates
+    description: Automatic system updates
+  - name: puppet-ups
+    description: Module to monitor a UPS
+  - name: puppet-wh31e
+    description: Configure wh31e_metrics
+  - name: puppet-wireguard
+    description: Configure Wireguard
+  - name: puppet-zwave
+    description: Module for ZWave server

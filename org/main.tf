@@ -1,82 +1,69 @@
-terraform {
-  required_providers {
-    github = {
-      source  = "integrations/github"
-      version = "~> 6.3"
-    }
-  }
-}
-
-variable "name" {
-  type = string
-}
-
-data "github_repositories" "all" {
-  query = "org:${var.name}"
-}
-
-data "github_repository" "each" {
-  for_each  = toset(data.github_repositories.all.full_names)
-  full_name = each.key
+locals {
+  repomap = { for repo in var.repos : repo.name => repo }
 }
 
 resource "github_repository" "each" {
-  for_each = { for index, repo in data.github_repository.each : repo.name => repo }
-
-  name = each.value.name
+  for_each = local.repomap
+  name     = each.key
 
   description  = each.value.description
   homepage_url = each.value.homepage_url
 
   has_issues      = true
-  has_downloads   = false
   has_wiki        = false
   has_projects    = false
   has_discussions = false
-
-  vulnerability_alerts = false
 
   allow_merge_commit     = false
   allow_rebase_merge     = false
   allow_squash_merge     = true
   delete_branch_on_merge = true
   allow_update_branch    = true
+}
 
-  dynamic "pages" {
-    for_each = each.value.pages
-    content {
-      source {
-        branch = pages.value.source[0].branch
-        path   = pages.value.source[0].path
-      }
-    }
+resource "github_repository_pages" "each" {
+  for_each   = { for repo in var.repos : repo.name => repo if repo.pages != null }
+  repository = each.value.name
+
+  build_type = "legacy"
+
+  source {
+    branch = each.value.pages.branch
+    path   = each.value.pages.path
   }
 }
 
-resource "github_issue_label" "bug" {
-  for_each   = toset([for index, repo in data.github_repository.each : repo.name])
-  repository = each.key
-  name       = "bug"
-  color      = "ffa500"
+resource "github_branch_protection" "each" {
+  for_each      = local.repomap
+  repository_id = each.key
+
+  pattern             = "main"
+  enforce_admins      = true
+  allows_deletions    = false
+  allows_force_pushes = false
+
+  required_status_checks {
+    strict   = true
+    contexts = var.checks
+  }
 }
 
-resource "github_issue_label" "feature" {
-  for_each   = toset([for index, repo in data.github_repository.each : repo.name])
+resource "github_repository_vulnerability_alerts" "each" {
+  for_each   = local.repomap
   repository = each.key
-  name       = "feature"
-  color      = "0000ff"
+
+  enabled = false
 }
 
-resource "github_issue_label" "mergewhenready" {
-  for_each   = toset([for index, repo in data.github_repository.each : repo.name])
+resource "github_issue_labels" "each" {
+  for_each   = local.repomap
   repository = each.key
-  name       = "mergewhenready"
-  color      = "008000"
-}
 
-resource "github_issue_label" "donotmerge" {
-  for_each   = toset([for index, repo in data.github_repository.each : repo.name])
-  repository = each.key
-  name       = "donotmerge"
-  color      = "ff0000"
+  dynamic "label" {
+    for_each = var.labels
+    content {
+      name  = label.value.name
+      color = label.value.color
+    }
+  }
 }

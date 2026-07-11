@@ -1,115 +1,53 @@
-terraform {
-  required_providers {
-    github = {
-      source  = "integrations/github"
-      version = "6.6.0"
-    }
-  }
-}
-
-provider "github" {
-  alias = "akerl"
-  owner = "akerl"
-  app_auth {
-    id              = 345463
-    installation_id = 38440759
-    pem_file        = file("key.pem")
-  }
-}
-
-provider "github" {
-  alias = "amylum"
-  owner = "amylum"
-  app_auth {
-    id              = 345463
-    installation_id = 38440760
-    pem_file        = file("key.pem")
-  }
-}
-
-provider "github" {
-  alias = "armorfret"
-  owner = "armorfret"
-  app_auth {
-    id              = 345463
-    installation_id = 38440765
-    pem_file        = file("key.pem")
-  }
-}
-
-provider "github" {
-  alias = "dock0"
-  owner = "dock0"
-  app_auth {
-    id              = 345463
-    installation_id = 38440767
-    pem_file        = file("key.pem")
-  }
-}
-
-provider "github" {
-  alias = "halyard"
-  owner = "halyard"
-  app_auth {
-    id              = 345463
-    installation_id = 38440768
-    pem_file        = file("key.pem")
-  }
+locals {
+  yaml = yamldecode(file("${path.module}/data.yaml"))
 }
 
 module "akerl" {
   source = "./org"
-  name   = "akerl"
   providers = {
     github = github.akerl
   }
+  labels = local.yaml.labels
+  checks = local.yaml.checks
+  repos  = local.yaml.orgs.akerl
 }
 
 module "amylum" {
   source = "./org"
-  name   = "amylum"
   providers = {
     github = github.amylum
   }
+  labels = local.yaml.labels
+  checks = local.yaml.checks
+  repos  = local.yaml.orgs.amylum
 }
 
 module "armorfret" {
   source = "./org"
-  name   = "armorfret"
   providers = {
     github = github.armorfret
   }
+  labels = local.yaml.labels
+  checks = local.yaml.checks
+  repos  = local.yaml.orgs.armorfret
 }
 
 module "dock0" {
   source = "./org"
-  name   = "dock0"
   providers = {
     github = github.dock0
   }
+  labels = local.yaml.labels
+  checks = local.yaml.checks
+  repos  = local.yaml.orgs.dock0
 }
 
 module "halyard" {
   source = "./org"
-  name   = "halyard"
   providers = {
     github = github.halyard
   }
-}
-
-import {
-  to = module.halyard.github_repository.each["puppet-ecowitt"]
-  id = "puppet-ecowitt"
-}
-import {
-  to = module.halyard.github_repository.each["puppet-bulldozer"]
-  id = "puppet-bulldozer"
-}
-import {
-  to = module.akerl.github_repository.each["mq2glasses"]
-  id = "mq2glasses"
-}
-import {
-  to = module.akerl.github_repository.each["macroquest"]
-  id = "macroquest"
+  labels = local.yaml.labels
+  checks = local.yaml.checks
+  repos  = local.yaml.orgs.halyard
 }
