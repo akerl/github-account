@@ -33,18 +33,43 @@ resource "github_repository_pages" "each" {
   }
 }
 
-resource "github_branch_protection" "each" {
-  for_each      = local.repomap
-  repository_id = each.key
+resource "github_repository_ruleset" "each" {
+  for_each   = local.repomap
+  repository = each.key
 
-  pattern             = "main"
-  enforce_admins      = true
-  allows_deletions    = false
-  allows_force_pushes = false
+  name        = "Default branch protection"
+  target      = "branch"
+  enforcement = "active"
 
-  required_status_checks {
-    strict   = true
-    contexts = var.checks
+  conditions {
+    ref_name {
+      include = ["~DEFAULT_BRANCH"]
+      exclude = []
+    }
+  }
+
+  bypass_actors {
+    actor_id    = "41898282"
+    actor_type  = "User"
+    bypass_mode = "always"
+  }
+
+  rules {
+    creation         = true
+    update           = true
+    deletion         = true
+    non_fast_forward = true
+
+    required_status_checks {
+      strict_required_status_checks_policy = true
+
+      dynamic "required_check" {
+        for_each = var.checks
+        content {
+          context = each.key
+        }
+      }
+    }
   }
 }
 
