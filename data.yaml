@@ -1,6 +1,6 @@
 ---
 checks:
-- Build / Build (pull_request)
+- 'Build'
 - 'policy-bot: main'
 labels:
 - name: bug
