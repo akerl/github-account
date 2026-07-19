@@ -48,6 +48,29 @@ resource "github_branch_protection" "each" {
   }
 }
 
+resource "github_repository_ruleset" "tag" {
+  for_each   = local.repomap
+  repository = each.key
+
+  name        = "restrict tags"
+  target      = "tag"
+  enforcement = "active"
+
+  conditions {
+    ref_name {
+      include = ["~ALL"]
+      exclude = []
+    }
+  }
+
+  rules {
+    creation = true
+    update   = true
+    deletion = true
+  }
+}
+
+
 resource "github_repository_vulnerability_alerts" "each" {
   for_each   = local.repomap
   repository = each.key
