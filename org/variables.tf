@@ -7,6 +7,7 @@ variable "repos" {
       branch = string
       path   = string
     }))
+    tag_bypass = optional(list(number), [])
   }))
 }
 

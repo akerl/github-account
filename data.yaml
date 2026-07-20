@@ -234,83 +234,175 @@ orgs:
     description: Helpers for puppet repos
   - name: puppet-acme
     description: Module to configure ACME-based TLS certs
+    tag_bypass:
+      - 4341944
   - name: puppet-babybuddy
+    tag_bypass:
+      - 4341944
   - name: puppet-backup
     description: Module for backing up with restic
+    tag_bypass:
+      - 4341944
   - name: puppet-bulldozer
     description: Deploy Bulldozer GitHub bot
+    tag_bypass:
+      - 4341944
   - name: puppet-configvault
+    tag_bypass:
+      - 4341944
   - name: puppet-console
     description: Manage console
+    tag_bypass:
+      - 4341944
   - name: puppet-cultivator
+    tag_bypass:
+      - 4341944
   - name: puppet-disks
     description: Configure devices and mounts
+    tag_bypass:
+      - 4341944
   - name: puppet-docker
     description: Configure Docker containers
+    tag_bypass:
+      - 4341944
   - name: puppet-ecowitt
+    tag_bypass:
+      - 4341944
   - name: puppet-frameproxy
     description: MITMProxy instance for Frame
+    tag_bypass:
+      - 4341944
   - name: puppet-garmin
     description: Garmin importer for Grafana/Influx
+    tag_bypass:
+      - 4341944
   - name: puppet-goat
     description: Puppet module for goatcounter
+    tag_bypass:
+      - 4341944
   - name: puppet-govee
+    tag_bypass:
+      - 4341944
   - name: puppet-grafana
     description: Puppet module to manage Grafana
+    tag_bypass:
+      - 4341944
   - name: puppet-homeassistant
     description: Puppet module to install HomeAssistant
+    tag_bypass:
+      - 4341944
   - name: puppet-hostname
     description: Module to configure OSX hostname
+    tag_bypass:
+      - 4341944
   - name: puppet-influxdb
     description: Configure InfluxDB
+    tag_bypass:
+      - 4341944
   - name: puppet-iptables
     description: Module to configure iptables rules
+    tag_bypass:
+      - 4341944
   - name: puppet-keyboard
     description: USB OTG keyboard gadget
+    tag_bypass:
+      - 4341944
   - name: puppet-kiosk
     description: Configure kiosk display
+    tag_bypass:
+      - 4341944
   - name: puppet-kvm
     description: Configure KVM virtual machines
+    tag_bypass:
+      - 4341944
   - name: puppet-ledgergraph
+    tag_bypass:
+      - 4341944
   - name: puppet-loki
     description: Module to install Loki
+    tag_bypass:
+      - 4341944
   - name: puppet-maybe
+    tag_bypass:
+      - 4341944
   - name: puppet-mqtt
+    tag_bypass:
+      - 4341944
   - name: puppet-network
     description: Configure network settings
+    tag_bypass:
+      - 4341944
   - name: puppet-nginx
     description: Puppet module for nginx sites
+    tag_bypass:
+      - 4341944
   - name: puppet-ntp
     description: Puppet NTP module
+    tag_bypass:
+      - 4341944
   - name: puppet-openssh
     description: Puppet module to install openssh server
+    tag_bypass:
+      - 4341944
   - name: puppet-policybot
     description: Policy-bot Github App module
+    tag_bypass:
+      - 4341944
   - name: puppet-prometheus
     description: Manage Prometheus monitoring
+    tag_bypass:
+      - 4341944
   - name: puppet-sdr
     description: Configure SDR tools
+    tag_bypass:
+      - 4341944
   - name: puppet-serverless
     description: Configure puppet to run automatically without a master
+    tag_bypass:
+      - 4341944
   - name: puppet-simplefin
     description: Puppet module for simplefin exporter
+    tag_bypass:
+      - 4341944
   - name: puppet-slackmastodon
     description: Puppet module to install akerl/slack-mastodon
+    tag_bypass:
+      - 4341944
   - name: puppet-smb
     description: Module to configure SMB mounts
+    tag_bypass:
+      - 4341944
   - name: puppet-stocks
     description: Stock ticker metrics module
+    tag_bypass:
+      - 4341944
   - name: puppet-sysctl
+    tag_bypass:
+      - 4341944
   - name: puppet-teslamate
     description: Puppet module to install Teslamate
+    tag_bypass:
+      - 4341944
   - name: puppet-unpoller
+    tag_bypass:
+      - 4341944
   - name: puppet-updates
     description: Automatic system updates
+    tag_bypass:
+      - 4341944
   - name: puppet-ups
     description: Module to monitor a UPS
+    tag_bypass:
+      - 4341944
   - name: puppet-wh31e
     description: Configure wh31e_metrics
+    tag_bypass:
+      - 4341944
   - name: puppet-wireguard
     description: Configure Wireguard
+    tag_bypass:
+      - 4341944
   - name: puppet-zwave
     description: Module for ZWave server
+    tag_bypass:
+      - 4341944
