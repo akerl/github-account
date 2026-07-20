@@ -230,6 +230,8 @@ orgs:
     description: Custom Homebrew software repo
   - name: image-archlinux
     description: Archlinux OS image
+    tag_bypass:
+      - 4341944
   - name: local-puppet-helper
     description: Helpers for puppet repos
   - name: puppet-acme
