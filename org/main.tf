@@ -15,8 +15,8 @@ resource "github_repository" "each" {
   has_discussions = false
 
   allow_merge_commit     = false
-  allow_rebase_merge     = false
-  allow_squash_merge     = true
+  allow_rebase_merge     = true
+  allow_squash_merge     = false
   delete_branch_on_merge = true
   allow_update_branch    = true
 }
@@ -63,6 +63,15 @@ resource "github_repository_ruleset" "tag" {
     }
   }
 
+  dynamic "bypass_actors" {
+    for_each = each.value.tag_bypass
+    content {
+      actor_id    = bypass_actors.value
+      actor_type  = "Integration"
+      bypass_mode = "always"
+    }
+  }
+
   rules {
     creation = true
     update   = true
@@ -76,6 +85,14 @@ resource "github_repository_vulnerability_alerts" "each" {
   repository = each.key
 
   enabled = false
+}
+
+resource "github_workflow_repository_permissions" "test" {
+  for_each   = local.repomap
+  repository = each.key
+
+  default_workflow_permissions     = "read"
+  can_approve_pull_request_reviews = false
 }
 
 resource "github_issue_labels" "each" {
