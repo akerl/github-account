@@ -13,7 +13,7 @@ labels:
   color: ff0000
 orgs:
   akerl:
-  - name: ".github"
+  - name: .github
   - name: Alfred-Audio-Device
     description: http://michael.thegrebs.com/2013/01/18/alfred2-audio-device/
   - name: accounting
@@ -51,7 +51,7 @@ orgs:
   - name: githubchart
     pages:
       branch: gh-pages
-      path: "/"
+      path: /
     description: Contribution plotting from GitHub's feed
   - name: githubstats
     description: Object oriented interface for Github's contribution scoring system
@@ -150,7 +150,7 @@ orgs:
   - name: yubiotp
     description: Fetch MFA code from multiple connected yubikeys
   amylum:
-  - name: ".github"
+  - name: .github
   - name: build
     description: Docker container for building packages
   - name: repo
@@ -159,7 +159,7 @@ orgs:
   - name: s3repo
     description: Simple library for interacting with Archlinux repos in S3
   armorfret:
-  - name: ".github"
+  - name: .github
   - name: ci-helpers
   - name: terraform-aws-acm-certificate
     description: Terraform module for provisioning ACM TLS certificates
@@ -194,7 +194,7 @@ orgs:
     description: Terraform Provider to generate IAM access keys without storing the
       secret in the statefile
   dock0:
-  - name: ".github"
+  - name: .github
   - name: action-helper
     description: Helpers for GitHub Actions
   - name: arch
@@ -217,14 +217,14 @@ orgs:
   - name: tarball_arch
     description: Barebones tarball contain Archlinux for minimal containersc
   halyard:
-  - name: ".github"
+  - name: .github
   - name: halyard
     description: Puppet repo for my Macs
   - name: halyard.github.io
     homepage_url: https://halyard.github.io
     pages:
       branch: main
-      path: "/"
+      path: /
     description: Web portal for halyard
   - name: homebrew-core
     description: Custom Homebrew software repo
@@ -406,5 +406,9 @@ orgs:
       - 4341944
   - name: puppet-zwave
     description: Module for ZWave server
+    tag_bypass:
+      - 4341944
+  - name: puppet-fleet
+    description: Module for Fleet MDM server
     tag_bypass:
       - 4341944
